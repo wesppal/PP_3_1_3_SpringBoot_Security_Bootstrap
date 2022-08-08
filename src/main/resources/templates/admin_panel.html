@@ -117,7 +117,7 @@
                                                                 th:data-target="${'#modalEdit'+user.id}"> Edit
                                                         </button>
 
-                                                        <!-- Всплывающее окно от модальной кнопки edit из data-target="#modalEdit" -->
+                                                        <!-- Всплывающее окно от модальной кнопки edi -->
                                                         <div class="modal" th:id="${'modalEdit' + user.id}"
                                                              tabindex="-1" role="dialog"
                                                              aria-labelledby="modalEditLabel" aria-hidden="true">
@@ -136,8 +136,8 @@
                                                                                 <span aria-hidden="true">&times;</span>
                                                                             </button>
                                                                         </div>
+                                                                        <!-- Тело модального окна от модальной кнопки edit -->
                                                                         <div class="modal-body">
-                                                                            <!-- Тело модального окна редактирования тест варинт 1 -->
                                                                             <div class="text-center">
                                                                                 <div class="form-group">
                                                                                     <label for="id0"><b>ID</b></label>
@@ -220,19 +220,18 @@
                                                                 </div>
                                                             </form>
                                                         </div>
-                                                        <!-- Конец всплывающего окно от модальной кнопки edit из data-target="#modalEdit" -->
+                                                        <!-- Конец всплывающего окно от модальной кнопки edit -->
 
                                                     </td>
                                                     <td>
                                                         <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                                th:data-target="${'#modalDelete' + user.id}">Delete
+                                                                th:data-target="${'#modalDelete'+user.id}"> Delete
                                                         </button>
 
-                                                        <!-- Всплывающее окно от модальной кнопки delete из data-target="#modalDelete" -->
-
+                                                        <!-- Всплывающее окно от модальной кнопки delete  -->
                                                         <div class="modal" th:id="${'#modalDelete' + user.id}"
                                                              tabindex="-1" role="dialog"
-                                                             aria-labelledby="modalDeleteLabel" aria-hidden="true">
+                                                             aria-labelledby="modalEditLabel" aria-hidden="true">
                                                             <form th:method="DELETE"
                                                                   th:action="@{'/admin/delete/'+${user.id}}">
                                                                 <div class="modal-dialog modal-dialog-centered"
@@ -241,82 +240,101 @@
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
                                                                                 id="modalDeleteLabel">
-                                                                                Delete user</h5>
+                                                                                Edit
+                                                                                user</h5>
                                                                             <button type="button" class="close"
                                                                                     data-dismiss="modal"
                                                                                     aria-label="Close">
                                                                                 <span aria-hidden="true">&times;</span>
                                                                             </button>
                                                                         </div>
+                                                                        <!-- Тело от модальной кнопки delete   -->
                                                                         <div class="modal-body">
-
                                                                             <div class="text-center">
                                                                                 <div class="form-group">
-                                                                                    <label for="id1"><b>ID</b></label>
+                                                                                    <label for="id0"><b>ID</b></label>
                                                                                     <input type="number"
                                                                                            class="form-control"
                                                                                            th:value="*{user.id}"
-                                                                                           id="id1" disabled>
+                                                                                           id="id1"
+                                                                                           disabled>
                                                                                 </div>
+
                                                                                 <div class="form-group">
-                                                                                    <label for="firtName1"><b>First
+                                                                                    <label for="firstName0"><b>First
                                                                                         name</b></label>
                                                                                     <input type="text"
                                                                                            class="form-control"
+                                                                                           name="firstName"
                                                                                            th:value="*{user.firstName}"
-                                                                                           id="firtName1" disabled>
+                                                                                           id="firstName1"
+                                                                                           disabled>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="lastName1"><b>Last
+                                                                                    <label for="lastName0"><b>Last
                                                                                         name</b></label>
                                                                                     <input type="text"
                                                                                            class="form-control"
+                                                                                           name="lastName"
                                                                                            th:value="*{user.lastName}"
-                                                                                           id="lastName1" disabled>
+                                                                                           id="lastName1"
+                                                                                           disabled>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="age1"><b>Age</b></label>
+                                                                                    <label for="age0"><b>Age</b></label>
                                                                                     <input type="number" min="1"
-                                                                                           max="150" step="1"
+                                                                                           max="150"
+                                                                                           step="1"
                                                                                            class="form-control"
+                                                                                           name="age"
                                                                                            th:value="*{user.age}"
-                                                                                           id="age1" disabled>
+                                                                                           id="age1"
+                                                                                           disabled>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="email1"><b>Email</b></label>
+                                                                                    <label for="username0"><b>Email</b></label>
                                                                                     <input type="text"
                                                                                            class="form-control"
+                                                                                           name="username"
                                                                                            th:value="*{user.username}"
-                                                                                           id="email1" disabled>
+                                                                                           id="username1"
+                                                                                           disabled>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="password1"><b>Password</b></label>
+                                                                                    <label for="password0"><b>Password</b></label>
                                                                                     <input type="text"
                                                                                            class="form-control"
+                                                                                           name="password"
                                                                                            th:value="*{user.password}"
-                                                                                           id="password1" disabled>
+                                                                                           id="password1"
+                                                                                           disabled>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="roles1"><b>Role</b></label>
+                                                                                    <label for="roles0"><b>Role</b></label>
                                                                                     <select multiple
                                                                                             class="form-control form-control-sm"
                                                                                             id="roles1" name="roles"
                                                                                             th:value="*{user.roles}"
-                                                                                            size="2" required disabled>
-                                                                                        <option value="1">USER</option>
-                                                                                        <option value="2">ADMIN</option>
+                                                                                            size="2"
+                                                                                            disabled>
+                                                                                        <option value="1">ADMIN
+                                                                                        </option>
+                                                                                        <option value="2">USER
+                                                                                        </option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
+                                                                            <!-- Конец тела от модальной кнопки delete  -->
 
                                                                         </div>
+
                                                                         <div class="modal-footer">
                                                                             <button type="button"
                                                                                     class="btn btn-secondary"
                                                                                     data-dismiss="modal">Close
                                                                             </button>
                                                                             <button type="submit"
-                                                                                    class="btn btn-primary">
+                                                                                    class="btn btn-danger">
                                                                                 Delete
                                                                             </button>
                                                                         </div>
@@ -324,7 +342,7 @@
                                                                 </div>
                                                             </form>
                                                         </div>
-                                                        <!-- Конец всплывающего окно от модальной кнопки delete из data-target="#modalDelete" -->
+                                                        <!-- Конец всплывающего окно от модальной кнопки delete -->
 
                                                     </td>
                                                 </tr>
@@ -387,8 +405,8 @@
                                                         <label><b>Role</b></label>
                                                         <select multiple class="form-control form-control-sm"
                                                                 name="roles" size="2">
-                                                            <option value="1">USER</option>
-                                                            <option value="2">ADMIN</option>
+                                                            <option value="1">ADMIN</option>
+                                                            <option value="2">USER</option>
                                                         </select>
                                                     </div>
                                                     <button type="submit" class="btn btn-success">Add new user</button>

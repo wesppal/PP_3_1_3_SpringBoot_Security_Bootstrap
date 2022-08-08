@@ -48,10 +48,9 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @RequestMapping(value = "/admin/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    @DeleteMapping(value = "/admin/delete/{id}")
     public String deleteUser(@PathVariable(name = "id") Long id) {
-        System.out.println(userService.getUserById(id).toString());
-//        userService.deleteUser(id);
+        userService.deleteUser(id);
         return "redirect:/admin";
     }
 }
