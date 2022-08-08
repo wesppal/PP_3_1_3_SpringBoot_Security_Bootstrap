@@ -30,39 +30,28 @@ public class AdminController {
     @GetMapping("/admin")
     public String allUsers(Model model, Principal principal) {
         model.addAttribute("userAdmin", userService.findByUsername(principal.getName()));
+        model.addAttribute("newUser", new User());
         model.addAttribute("allUsers", userService.getAllUsers());
         model.addAttribute("allRoles", roleService.getAllRoles());
         return "admin_panel";
     }
 
-    @GetMapping("/admin/new")
-    public String newUser(@ModelAttribute("user") User user, Model model) {
-        model.addAttribute("newUser", user);
-        return "redirect:";
-    }
-
-    @PostMapping("/admin/new")
+    @PostMapping("/admin")
     public String addUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
-        return "redirect:";
+        return "redirect:/admin";
     }
 
-
-    @GetMapping("/admin/edit/{id}")
-    public String edit(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userService.getUserById(id));
-        return "redirect:";
-    }
-
-    @PatchMapping("/admin/edit/{id}")
+    @PatchMapping("/admin")
     public String update(@ModelAttribute("user") User user) {
-        userService.saveUser(user);
-        return "redirect:";
+
+//        userService.saveUser(user);
+        return "redirect:/admin";
     }
 
-    @DeleteMapping("/admin/{id}")
-    public String deleteUser(@PathVariable("id") Long id) {
-        userService.deleteUser(id);
-        return "redirect:";
+    @DeleteMapping("/admin")
+    public String deleteUser(@ModelAttribute("user") User user) {
+        userService.deleteUser(user.getId());
+        return "redirect:/admin";
     }
 }
