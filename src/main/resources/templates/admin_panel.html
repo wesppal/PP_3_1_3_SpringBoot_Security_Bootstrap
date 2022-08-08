@@ -168,7 +168,7 @@
                                                                                 </div>
                                                                                 <div class="form-group">
                                                                                     <label for="editPassword"><b>Password</b></label>
-                                                                                    <input type="text" class="form-control"
+                                                                                    <input type="password" class="form-control"
                                                                                            name="password" th:value="*{user.password}"
                                                                                            id="editPassword">
                                                                                 </div>
@@ -179,8 +179,9 @@
                                                                                             id="editRoles" name="roles"
                                                                                             th:value="*{user.roles}"
                                                                                             size="2" required>
-                                                                                        <option value="1">ADMIN</option>
-                                                                                        <option value="2">USER</option>
+                                                                                        <option th:each="role : ${allRoles}"
+                                                                                                th:text="${role.toString()}"
+                                                                                                th:value="${role.getId()}">Role </option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -254,18 +255,13 @@
                                                                                            id="deleteEmail" disabled>
                                                                                 </div>
                                                                                 <div class="form-group">
-                                                                                    <label for="deletePassword"><b>Password</b></label>
-                                                                                    <input type="text" class="form-control"
-                                                                                           th:value="*{user.password}"
-                                                                                           id="deletePassword" disabled>
-                                                                                </div>
-                                                                                <div class="form-group">
                                                                                     <label for="deleteRoles"><b>Role</b></label>
                                                                                     <select multiple class="form-control form-control-sm"
                                                                                             id="deleteRoles" th:value="*{user.roles}"
                                                                                             size="2" required disabled>
-                                                                                        <option value="1">ADMIN</option>
-                                                                                        <option value="2">USER</option>
+                                                                                        <option th:each="role : ${allRoles}"
+                                                                                                th:text="${role.toString()}"
+                                                                                                th:value="${role.getId()}">Role </option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -332,15 +328,15 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label><b>Password</b></label>
-                                                        <input type="text" th:field="*{password}" class="form-control"
+                                                        <input type="password" th:field="*{password}" class="form-control"
                                                                placeholder="Password" required>
                                                     </div>
                                                     <div class="form-group">
                                                         <label><b>Role</b></label>
-                                                        <select multiple class="form-control form-control-sm"
-                                                                name="roles" size="2">
-                                                            <option value="1">ADMIN</option>
-                                                            <option value="2">USER</option>
+                                                        <select multiple class="form-control form-control-sm" name="roles" size="2">
+                                                            <option th:each="role : ${allRoles}"
+                                                                    th:text="${role.toString()}"
+                                                                    th:value="${role.getId()}">Role </option>
                                                         </select>
                                                     </div>
                                                     <button type="submit" class="btn btn-success">Add new user</button>
@@ -404,6 +400,7 @@
                 </div>
                 <!-- Конец вкладки с id="v-pills-user" -->
             </div>
+            <!-- Конец таб контента Admin и User -->
         </div>
         <!-- Конец содержание кнопок панели правая часть сайта -->
     </div>
