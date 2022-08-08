@@ -256,7 +256,7 @@
                                         <div class="container">
                                             <div class="text-center">
                                                 <form method="POST" th:action="@{admin/new}" th:object="${newUser}"
-                                                        role="form" style="max-width:300px;margin:auto;"> <!-- А тут переменная незнакомая -->
+                                                                                role="form" style="max-width:300px;margin:auto;">                   <!-- А тут переменная незнакомая -->
                                                     <div class="form-group">
                                                         <label for="firstName3"><b>First name</b></label>
                                                         <input type="text" th:field="*{firstName}" class="form-control" id="firstName3">          <!-- Тут выбивает ошибку -->
