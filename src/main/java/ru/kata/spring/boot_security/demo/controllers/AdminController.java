@@ -42,16 +42,16 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-    @PatchMapping("/admin")
+    @PatchMapping(value = "/admin/edit/{id}")
     public String update(@ModelAttribute("user") User user) {
-
-//        userService.saveUser(user);
+        userService.saveUser(user);
         return "redirect:/admin";
     }
 
-    @DeleteMapping("/admin")
-    public String deleteUser(@ModelAttribute("user") User user) {
-        userService.deleteUser(user.getId());
+    @RequestMapping(value = "/admin/delete/{id}", method = {RequestMethod.DELETE, RequestMethod.GET})
+    public String deleteUser(@PathVariable(name = "id") Long id) {
+        System.out.println(userService.getUserById(id).toString());
+//        userService.deleteUser(id);
         return "redirect:/admin";
     }
 }
